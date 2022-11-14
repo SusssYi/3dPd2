@@ -4,34 +4,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
 @layer utilities {
-  .btn-base {
-    @apply px-4 py-2 font-semibold transition-all bg-black/40 text-white dark:bg-white dark:text-black duration-300 rounded-lg shadow-lg cursor-pointer hover:shadow-lg hover:-translate-y-2 active:-translate-y-1;
-  }
+    .btn-base {
+        @apply px-4 py-2 font-semibold transition-all bg-black/40 text-white dark:bg-white dark:text-black duration-300 rounded-lg shadow-lg cursor-pointer hover:shadow-lg hover:-translate-y-2 active:-translate-y-1;
+    }
 
-  .input-base {
-    @apply py-2 transition-all duration-300 ease-in-out px-4 rounded-lg focus:border-b-green-500 outline-none min-w-[500px] text-left border-b-2;
-  }
-  .container-col {
-    @apply flex flex-col items-center justify-center w-full h-auto min-h-screen;
-  }
+    .input-base {
+        @apply py-2 transition-all duration-300 ease-in-out px-4 rounded-lg focus:border-b-green-500 outline-none min-w-[500px] text-left border-b-2;
+    }
+    .container-col {
+        @apply flex flex-col items-center justify-center w-full h-auto min-h-screen;
+    }
+
+    .pd-header {
+        @apply px-12 md:px-16 xl:px-20;
+    }
+    .text-title {
+        @apply text-2xl font-semibold;
+    }
+
+    .grid_boxes {
+        @apply min-h-[16vh] md:min-h-[14vh] xl:min-h-[20vh] ring-2 ring-gray-300 rounded-md p-2 md:p-4;
+    }
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  outline: 0;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    outline: 0;
 
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
