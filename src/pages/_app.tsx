@@ -1,10 +1,8 @@
-import { DefaultSeo } from "next-seo";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import type { AppProps } from "next/app";
-import SEO from "../../next-seo.config.js";
+import { MainProvider } from "../context/main.context";
 import "../styles/globals.css";
-
-import { ThemeProvider } from "next-themes";
-
 // eslint-disable-next-line require-jsdoc
 /**
  * 描述
@@ -14,16 +12,16 @@ import { ThemeProvider } from "next-themes";
  * @return {any}
  */
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      {/* the default seo , see :https://github.com/garmeeh/next-seo*/}
+    gsap.registerPlugin(ScrollTrigger);
+    return (
+        <>
+            {/* the default seo , see :https://github.com/garmeeh/next-seo*/}
 
-      <DefaultSeo {...SEO} />
-      <ThemeProvider attribute="class">
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
-  );
+            <MainProvider>
+                <Component {...pageProps} />
+            </MainProvider>
+        </>
+    );
 }
 
 export default MyApp;
