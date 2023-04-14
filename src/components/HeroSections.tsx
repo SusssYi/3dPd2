@@ -21,75 +21,72 @@ const HeroSections: React.FC<HeroSectionsProps> = ({ data, index }) => {
 
     // BorderRadios and progressBar Animation
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if (direction === "right") {
-                gsap.to(sectionRef.current, {
-                    borderTopLeftRadius: 10,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "top top",
-                        scrub: 0.1,
-                    },
-                });
-                gsap.to(sectionRef.current, {
-                    borderBottomLeftRadius: 10,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "bottom bottom",
-                        end: "bottom top",
-                        scrub: 0.1,
-                    },
-                });
-            } else {
-                gsap.to(sectionRef.current, {
-                    borderTopRightRadius: 10,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "top top",
-                        scrub: 0.1,
-                    },
-                });
-                gsap.to(sectionRef.current, {
-                    borderBottomRightRadius: 10,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "bottom bottom",
-                        end: "bottom top",
-                        scrub: 0.1,
-                    },
-                });
-            }
-
-            gsap.fromTo(
-                progressRef.current,
-                {
-                    height: 0,
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top top",
-                        end: "bottom bottom",
-                        scrub: 0.2,
-                    },
-                    ease: "power2.linear",
+        if (!document) return;
+        if (direction === "right") {
+            gsap.to(sectionRef.current, {
+                borderTopLeftRadius: 10,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top bottom",
+                    end: "top top",
+                    scrub: 0.1,
                 },
-                {
-                    height: "100%",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top top",
-                        end: "bottom bottom",
-                        scrub: 0.2,
-                    },
-                    ease: "power2.linear",
-                }
-            );
-        }, 1000);
+            });
+            gsap.to(sectionRef.current, {
+                borderBottomLeftRadius: 10,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                    scrub: 0.1,
+                },
+            });
+        } else {
+            gsap.to(sectionRef.current, {
+                borderTopRightRadius: 10,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top bottom",
+                    end: "top top",
+                    scrub: 0.1,
+                },
+            });
+            gsap.to(sectionRef.current, {
+                borderBottomRightRadius: 10,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                    scrub: 0.1,
+                },
+            });
+        }
 
-        return () => {
-            clearTimeout(timer);
-        };
+        gsap.fromTo(
+            progressRef.current,
+            {
+                height: 0,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.2,
+                },
+                ease: "power2.linear",
+            },
+            {
+                height: "100%",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.2,
+                },
+                ease: "power2.linear",
+            }
+        );
+
+        return () => {};
     }, []);
 
     return (

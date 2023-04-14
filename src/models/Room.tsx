@@ -43,14 +43,10 @@ const Room: React.FC<RoomProps> = () => {
 
     // scrollTrigger animation
     useEffect(() => {
-        const timer = setTimeout(() => {
-            // Register ScrollTrigger Timeline
-            GSAPAnimations.miniFLoorSpread(RoomRef);
-        }, 400);
-
-        return () => {
-            clearTimeout(timer);
-        };
+        if (!document) return;
+        // Register ScrollTrigger Timeline
+        GSAPAnimations.miniFLoorSpread(RoomRef);
+        return () => {};
     }, []);
 
     // Init children status when assets first loaded

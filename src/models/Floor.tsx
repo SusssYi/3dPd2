@@ -9,47 +9,46 @@ const Floor: React.FC<FloorProps> = () => {
 
     // Floor Animation
     useEffect(() => {
-        setTimeout(() => {
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".move-0",
-                    start: "top top",
-                    end: "bottom bottom",
-                    markers: false,
-                    scrub: 0.4,
-                },
-            }).to(firstCircle.current?.scale, {
-                x: 15,
-                y: 15,
-                z: 15,
-            });
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".move-1",
-                    start: "top top",
-                    end: "bottom bottom",
-                    markers: false,
-                    scrub: 0.4,
-                },
-            }).to(secondCircle.current?.scale, {
-                x: 15,
-                y: 15,
-                z: 15,
-            });
-            gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".move-2",
-                    start: "top top",
-                    end: "bottom bottom",
-                    markers: false,
-                    scrub: 0.4,
-                },
-            }).to(thirdCircle.current?.scale, {
-                x: 15,
-                y: 15,
-                z: 15,
-            });
-        }, 500);
+        if (!document) return;
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".move-0",
+                start: "top top",
+                end: "bottom bottom",
+                markers: false,
+                scrub: 0.4,
+            },
+        }).to(firstCircle.current?.scale, {
+            x: 15,
+            y: 15,
+            z: 15,
+        });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".move-1",
+                start: "top top",
+                end: "bottom bottom",
+                markers: false,
+                scrub: 0.4,
+            },
+        }).to(secondCircle.current?.scale, {
+            x: 15,
+            y: 15,
+            z: 15,
+        });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".move-2",
+                start: "top top",
+                end: "bottom bottom",
+                markers: false,
+                scrub: 0.4,
+            },
+        }).to(thirdCircle.current?.scale, {
+            x: 15,
+            y: 15,
+            z: 15,
+        });
     }, []);
 
     return (

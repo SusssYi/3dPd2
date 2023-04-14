@@ -87,46 +87,42 @@ const Experience: React.FC<EXperienceProps> = () => {
     }, [colorTheme]);
     // Camera control
     useEffect(() => {
-        const timer = setTimeout(() => {
-            const thirdMoveTimeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".move-2",
-                    start: "top top",
-                    end: "bottom bottom",
-                    markers: false,
-                    scrub: true,
-                },
-            });
-            mm.add(" (min-width: 969px) ", () => {
-                thirdMoveTimeline.to(
-                    orthographicCameraRef.current.position as any,
-                    {
-                        x: 3.73,
-                        y: 1.6,
-                        z: -2.21,
-                    },
-                    "same"
-                );
-            });
-            mm.add(
-                " (max-width: 968px) ",
-                () => {
-                    thirdMoveTimeline.to(
-                        orthographicCameraRef.current.position as any,
-                        {
-                            x: 0.49,
-                            y: 1.12,
-                            z: -1.75,
-                        }
-                    );
+        if (!document) return;
+        const thirdMoveTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".move-2",
+                start: "top top",
+                end: "bottom bottom",
+                markers: false,
+                scrub: true,
+            },
+        });
+        mm.add(" (min-width: 969px) ", () => {
+            thirdMoveTimeline.to(
+                orthographicCameraRef.current.position as any,
+                {
+                    x: 3.73,
+                    y: 1.6,
+                    z: -2.21,
                 },
                 "same"
             );
-        }, 500);
-
-        return () => {
-            clearTimeout(timer);
-        };
+        });
+        mm.add(
+            " (max-width: 968px) ",
+            () => {
+                thirdMoveTimeline.to(
+                    orthographicCameraRef.current.position as any,
+                    {
+                        x: 0.49,
+                        y: 1.12,
+                        z: -1.75,
+                    }
+                );
+            },
+            "same"
+        );
+        return () => {};
     }, []);
     return (
         <>
