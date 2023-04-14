@@ -5,7 +5,7 @@ import RoomCanvas from "../components/CanvasComponent";
 import DarkModeToggle from "../components/DarkModeToogle";
 import HeroSections from "../components/HeroSections";
 import useDarkSide from "../hooks/useDark";
-import { mockData } from "../utils/Mock";
+import { mockData } from "../utils/mockData";
 interface AppProps {}
 const Home: React.FC<AppProps> = () => {
     const { setTheme } = useDarkSide();
