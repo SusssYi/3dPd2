@@ -97,8 +97,6 @@ const GSAPAnimations = {
         });
         // Work on all devices
         mm.add("all", () => {
-            console.log(roomRef.current);
-
             roomRef.current.children.forEach((child: any) => {
                 if (child.name === "Mini_Floor") {
                     secondPartTimeline.add(

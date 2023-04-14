@@ -84,7 +84,6 @@ const Experience: React.FC<EXperienceProps> = () => {
                 intensity: 0.37,
             });
         }
-        console.log("colorThemeChanged");
     }, [colorTheme]);
     // Camera control
     useEffect(() => {
