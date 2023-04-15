@@ -1,5 +1,4 @@
 import { useProgress } from "@react-three/drei";
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { NextSeo } from "next-seo";
 import React, { Suspense, useEffect, useRef } from "react";
@@ -57,21 +56,9 @@ const Home: React.FC<AppProps> = () => {
                 {/* hero */}
                 <section>
                     <div className=" relative mx-auto h-screen max-w-[1100px]  sm:w-[calc(100%-160px)] ">
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                            }}
-                            animate={{
-                                opacity: 1,
-                            }}
-                            transition={{
-                                duration: 1,
-                                delay: 3,
-                            }}
-                            className=" fixed bottom-[3%]  text-black dark:text-white left-[50%] animate-bounce text-2xl md:text-3xl   "
-                        >
+                        <div className=" fixed bottom-[3%]  text-black dark:text-white left-[50%] animate-bounce text-2xl md:text-3xl   ">
                             <FaAngleDown />
-                        </motion.div>
+                        </div>
                         <div className=" absolute top-[55%] left-[45%] font-medium text-base intro-text ">
                             {"Welcome to my portfolio!"
                                 .split("")
@@ -163,21 +150,9 @@ const Home: React.FC<AppProps> = () => {
                 ))}
             </div>
             {/* ToggleIcons */}
-            <motion.div
-                initial={{
-                    opacity: 0,
-                }}
-                animate={{
-                    opacity: 1,
-                }}
-                transition={{
-                    duration: 1,
-                    delay: 3,
-                }}
-                className="toggle-box   fixed top-0 right-0 z-[999] flex  items-center space-x-2  p-4 "
-            >
+            <div className="toggle-box   fixed top-0 right-0 z-[999] flex  items-center space-x-2  p-4 ">
                 <DarkModeToggle />
-            </motion.div>
+            </div>
         </Suspense>
     );
 };
