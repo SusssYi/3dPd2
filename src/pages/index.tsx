@@ -18,6 +18,7 @@ const Home: React.FC<AppProps> = () => {
             setTheme("light");
         };
     }, []);
+    // FIXME: Add smooth scroll
 
     return (
         <Suspense fallback={<Loader />}>

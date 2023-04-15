@@ -448,6 +448,33 @@ const Room: React.FC<RoomProps> = () => {
         }
     };
 
+    // Init children status when assets first loaded
+    useEffect(() => {
+        GSAPAnimations.initalChildren(scene, texture);
+        document.body.style.overflow = " hidden";
+
+        scene.children.forEach((child) => {
+            child.scale.set(0, 0, 0);
+
+            if (child.name === "Cube001") {
+                child.scale.set(1, 1, 1);
+                child.position.set(0, 0, 0);
+                child.rotation.set(0, Math.PI / 4, 0);
+                child.castShadow = true;
+                child.receiveShadow = true;
+            }
+            if (child) {
+                childRefs.current[child.name.toLowerCase()] = child;
+            }
+        });
+        // Add rectLight to scene
+        const rectLight = new THREE.RectAreaLight(0xffffff, 1, 0.7, 0.7);
+        rectLight.position.set(8, 7, 1);
+        rectLight.rotation.x = -Math.PI / 2;
+        rectLight.rotation.z = Math.PI / 4;
+        lightRef.current = rectLight;
+        scene.add(rectLight);
+    }, [assetsName]);
     // Mouse move offset animation
     useFrame(() => {
         lerpRef.current.current = gsap.utils.interpolate(
@@ -487,6 +514,14 @@ const Room: React.FC<RoomProps> = () => {
         };
     }, []);
 
+    // scrollTrigger animation
+    useEffect(() => {
+        if (!document) return;
+        // Register ScrollTrigger Timeline
+        GSAPAnimations.miniFLoorSpread(RoomRef);
+        return () => {};
+    }, []);
+
     //  FireIntroAnimation
     useEffect(() => {
         if (!document) return;
@@ -497,42 +532,6 @@ const Room: React.FC<RoomProps> = () => {
             secondIntro();
         }
     }, [isDeskTop, scrolled, firstCompleted]);
-
-    // Init children status when assets first loaded
-    useEffect(() => {
-        GSAPAnimations.initalChildren(scene, texture);
-        document.body.style.overflow = " hidden";
-
-        scene.children.forEach((child) => {
-            child.scale.set(0, 0, 0);
-
-            if (child.name === "Cube001") {
-                child.scale.set(1, 1, 1);
-                child.position.set(0, 0, 0);
-                child.rotation.set(0, Math.PI / 4, 0);
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-            if (child) {
-                childRefs.current[child.name.toLowerCase()] = child;
-            }
-        });
-        // Add rectLight to scene
-        const rectLight = new THREE.RectAreaLight(0xffffff, 1, 0.7, 0.7);
-        rectLight.position.set(8, 7, 1);
-        rectLight.rotation.x = -Math.PI / 2;
-        rectLight.rotation.z = Math.PI / 4;
-        lightRef.current = rectLight;
-        scene.add(rectLight);
-    }, [assetsName]);
-
-    // scrollTrigger animation
-    useEffect(() => {
-        if (!document) return;
-        // Register ScrollTrigger Timeline
-        GSAPAnimations.miniFLoorSpread(RoomRef);
-        return () => {};
-    }, []);
 
     return (
         <>
