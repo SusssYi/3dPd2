@@ -187,7 +187,7 @@ const GSAPAnimations = {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.3,
+                            duration: 0.4,
                             ease: "back.out(2)",
                         })
                     );
@@ -199,7 +199,7 @@ const GSAPAnimations = {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.3,
+                            duration: 0.5,
                             ease: "back.out(2)",
                         })
                     );

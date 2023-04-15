@@ -6,16 +6,20 @@ html {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-/* *::-webkit-scrollbar {
-  display: none;
-} */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    overflow-x: hidden;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
-    /* transition: all 0.3s ease-in-out; */
+    transition: all 0.3s ease-in-out;
 }
 
 .section {
@@ -49,4 +53,16 @@ html {
 .styleThree {
     top: 80px;
     transform: skewY(25deg);
+}
+
+.animatedis {
+    display: inline-block;
+    transform: translateY(100%);
+}
+
+.intro-text {
+    overflow: hidden;
+}
+
+.arrow {
 }

@@ -13,6 +13,7 @@ import "../styles/globals.css";
  */
 function MyApp({ Component, pageProps }: AppProps) {
     gsap.registerPlugin(ScrollTrigger);
+
     return (
         <>
             {/* the default seo , see :https://github.com/garmeeh/next-seo*/}

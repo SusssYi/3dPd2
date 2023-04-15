@@ -4,7 +4,6 @@ import {
     OrthographicCameraProps,
 } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useControls } from "leva";
 import React, { useEffect, useRef } from "react";
 import { useMainContext } from "../context/main.context";
 
@@ -21,36 +20,7 @@ const Experience: React.FC<EXperienceProps> = () => {
     const ambientLightLightRef = useRef<AmbientLightProbeProps>(null!);
 
     const { colorTheme } = useMainContext();
-
-    const { far, intensity, mapSize, normalBias, position } = useControls(
-        "directionalLight",
-        {
-            mapSize: { value: 4096, min: 0, max: 4096, step: 1 },
-            far: { value: 20, min: 0, max: 20, step: 1 },
-            normalBias: { value: 0.05, min: 0, max: 1, step: 0.01 },
-            intensity: { value: 0.5, min: 0, max: 1, step: 0.01 },
-            position: {
-                value: [-1.5, 7, -0.13],
-                min: -10,
-                max: 100,
-                step: 0.01,
-            },
-            color: {
-                value: {
-                    r: 0,
-                    g: 0,
-                    b: 0,
-                },
-            },
-        }
-    );
-
     const mm = gsap.matchMedia();
-    const { rotation, cameraPosition } = useControls("cameraRotation", {
-        rotation: { value: [0.09, -0.48, 0.07], min: -10, max: 10, step: 0.01 },
-        cameraPosition: { value: [0, -0.42, 0], min: -10, max: 10, step: 0.01 },
-        lightPosition: { value: [-1.5, 7, 3], min: -10, max: 10, step: 0.01 },
-    });
 
     // Dark Mode Light handler
     useEffect(() => {
@@ -128,22 +98,22 @@ const Experience: React.FC<EXperienceProps> = () => {
         <>
             <ambientLight
                 color={[0.17, 0.686, 0.2313]}
-                intensity={intensity}
+                intensity={0.5}
                 ref={ambientLightLightRef as any}
             />
             <directionalLight
                 castShadow
-                position={position}
-                intensity={intensity}
+                position={[-1.5, 7, -0.13]}
+                intensity={0.5}
                 color={[0.17, 0.686, 0.2313]}
-                shadow-mapSize-width={mapSize}
-                shadow-mapSize-height={mapSize}
-                shadow-camera-far={far}
+                shadow-mapSize-width={4096}
+                shadow-mapSize-height={4096}
+                shadow-camera-far={20}
                 shadow-camera-left={-10}
                 shadow-camera-right={10}
                 shadow-camera-top={10}
                 shadow-camera-bottom={-10}
-                shadow-normalBias={normalBias}
+                shadow-normalBias={0.05}
                 ref={directionalLightRef as any}
             />
 
@@ -154,8 +124,8 @@ const Experience: React.FC<EXperienceProps> = () => {
                 bottom={-sizes.frustumSize / 2}
                 near={-100}
                 far={100}
-                position={[...cameraPosition]}
-                rotation={[rotation[0], rotation[1], rotation[2]]}
+                position={[0, -0.42, 0]}
+                rotation={[0.09, -0.48, 0.07]}
                 ref={orthographicCameraRef as any}
             >
                 <Room />
