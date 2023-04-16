@@ -252,6 +252,421 @@ const GSAPAnimations = {
             }
         });
     },
+    firstIntro: (
+        childRefs: any,
+        isDeskTop: any,
+        setFirstCompleted: any,
+        RoomRef: any
+    ) => {
+        const TimeLine = gsap.timeline();
+        if (isDeskTop) {
+            TimeLine.to(childRefs.current["cube001"].scale, {
+                x: 3,
+                y: 3,
+                z: 3,
+                ease: "back.out(2.5)",
+                duration: 1.7,
+            }).to(".intro-text .animatedis", {
+                yPercent: -100,
+                stagger: 0.05,
+                ease: "back.out(1.5)",
+                onComplete: () => {
+                    setFirstCompleted(true);
+                },
+            });
+        } else {
+            TimeLine.to(childRefs.current["cube001"].scale, {
+                x: 4,
+                y: 4,
+                z: 4,
+                ease: "back.out(2.5)",
+                duration: 0.7,
+            })
+                .to(RoomRef.current.position, {
+                    z: -1,
+                    ease: "power1.out",
+                    duration: 0.7,
+                })
+                .to(".intro-text .animatedis", {
+                    yPercent: -100,
+                    stagger: 0.05,
+                    ease: "back.in(1.5)",
+                    onComplete: () => {
+                        setFirstCompleted(true);
+                    },
+                })
+                .to(".arrow", {
+                    opacity: 1,
+                    x: 100,
+                });
+        }
+    },
+
+    secondIntro: (childRefs: any, isDeskTop: boolean, RoomRef: any) => {
+        const TimeLine = gsap.timeline();
+
+        if (isDeskTop) {
+            TimeLine.to(".intro-text .animatedis", {
+                yPercent: 100,
+                stagger: 0.07,
+                ease: "back.in(1.5)",
+            })
+                .to(childRefs.current["cube001"].position, {
+                    x: 8,
+                    y: 0.1,
+                    z: 0,
+                    ease: "back.out(2.5)",
+                    duration: 0.7,
+                })
+                .to(
+                    childRefs.current["cube001"].rotation,
+                    {
+                        y: 2 * Math.PI + Math.PI / 4,
+                    },
+                    "same"
+                )
+                .to(
+                    childRefs.current["cube001"].scale,
+                    {
+                        x: 10,
+                        y: 10,
+                        z: 10,
+                    },
+                    "same"
+                )
+                .to(
+                    childRefs.current["cube001"].position,
+                    {
+                        y: 8.5618,
+                        z: 1.324,
+                        x: 4,
+                    },
+                    "same"
+                )
+                .set(childRefs.current["body"].scale, {
+                    x: 1,
+                    y: 1,
+                    z: 1,
+                })
+                .to(
+                    RoomRef.current.position,
+                    {
+                        x: 0.5,
+                        z: 0.5,
+                    },
+                    "same"
+                )
+                .to(childRefs.current["cube001"].scale, {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    duration: 0.6,
+                })
+                .to(
+                    ".hero-title .animatedis",
+                    {
+                        yPercent: -100,
+                        stagger: 0.07,
+                        ease: "back.in(1.5)",
+                    },
+                    "same1"
+                )
+                .to(
+                    ".hero-subtitle-1 .animatedis",
+                    {
+                        yPercent: -100,
+                        stagger: 0.07,
+                        ease: "back.in(1.5)",
+                    },
+                    "same1"
+                )
+                .to(
+                    ".hero-subtitle-2 .animatedis",
+                    {
+                        yPercent: -100,
+                        stagger: 0.07,
+                        ease: "back.in(1.5)",
+                    },
+                    "same1"
+                )
+                .to(
+                    ".hero-subtitle-3 .animatedis",
+                    {
+                        yPercent: -100,
+                        stagger: 0.07,
+                        ease: "back.in(1.5)",
+                    },
+                    "same1"
+                )
+                .to(
+                    childRefs.current["aquarium"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.5"
+                )
+                .to(
+                    childRefs.current["shelves"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.4"
+                )
+                .to(
+                    childRefs.current["floor_items"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.3"
+                )
+                .to(
+                    childRefs.current["desks"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.2"
+                )
+                .to(
+                    childRefs.current["table_stuff"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.1"
+                )
+                .to(
+                    childRefs.current["computer"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.7,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.1"
+                )
+                .to(childRefs.current["mini_floor"].scale, {
+                    x: 1,
+                    y: 1,
+                    z: 1,
+                    duration: 0.7,
+                    ease: "back.out(2.2)",
+                })
+                .to(
+                    childRefs.current["chair"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.4,
+                        ease: "back.out(2.2)",
+                    },
+                    "chair"
+                )
+                .to(
+                    childRefs.current["fish"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.4,
+                        ease: "back.out(2.2)",
+                    },
+                    "chair"
+                )
+                .to(
+                    childRefs.current["chair"].rotation,
+                    {
+                        y: 4 * Math.PI + Math.PI / 4,
+                        ease: "power2.out",
+                        duration: 1,
+                        onComplete: () => {
+                            document.body.style.overflow = "auto";
+                        },
+                    },
+                    "chair"
+                );
+        } else {
+            TimeLine.to(childRefs.current["cube001"].position, {
+                x: 8,
+                y: 0.1,
+                z: 0,
+                ease: "back.out(2.5)",
+                duration: 0.7,
+            })
+                .to(
+                    childRefs.current["cube001"].rotation,
+                    {
+                        y: 2 * Math.PI + Math.PI / 4,
+                    },
+                    "same"
+                )
+                .to(
+                    childRefs.current["cube001"].scale,
+                    {
+                        x: 10,
+                        y: 10,
+                        z: 10,
+                    },
+                    "same"
+                )
+                .to(
+                    childRefs.current["cube001"].position,
+                    {
+                        y: 8.5618,
+                        z: 1.324,
+                        x: 4,
+                    },
+                    "same"
+                )
+                .set(childRefs.current["body"].scale, {
+                    x: 1,
+                    y: 1,
+                    z: 1,
+                })
+
+                .to(childRefs.current["cube001"].scale, {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    duration: 0.7,
+                })
+                .to(
+                    childRefs.current["aquarium"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.5"
+                )
+                .to(
+                    childRefs.current["shelves"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.4"
+                )
+                .to(
+                    childRefs.current["floor_items"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.3"
+                )
+                .to(
+                    childRefs.current["desks"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.2"
+                )
+                .to(
+                    childRefs.current["table_stuff"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.1"
+                )
+                .to(
+                    childRefs.current["computer"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    ">-0.1"
+                )
+                .to(childRefs.current["mini_floor"].scale, {
+                    x: 1,
+                    y: 1,
+                    z: 1,
+                    duration: 0.5,
+                    ease: "back.out(2.2)",
+                })
+                .to(
+                    childRefs.current["chair"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    "chair"
+                )
+                .to(
+                    childRefs.current["fish"].scale,
+                    {
+                        x: 1,
+                        y: 1,
+                        z: 1,
+                        duration: 0.5,
+                        ease: "back.out(2.2)",
+                    },
+                    "chair"
+                )
+                .to(
+                    childRefs.current["chair"].rotation,
+                    {
+                        y: 4 * Math.PI + Math.PI / 4,
+                        ease: "power2.out",
+                        duration: 1,
+                    },
+                    "chair"
+                )
+                .to(
+                    RoomRef.current.position,
+                    {
+                        x: 0.1,
+                        z: 0.2,
+                        onComplete: () => {
+                            document.body.style.overflow = "auto";
+                        },
+                    },
+                    ">-0.5"
+                );
+        }
+    },
 };
 
 export default GSAPAnimations;
